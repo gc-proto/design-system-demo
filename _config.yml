@@ -1,12 +1,128 @@
+# Site settings
+analytics:
+  provider: google-gtag
+  google:
+    tracking_id: GTM-KMVB8C2
+author:
+  en: Digital Transformation Office
+  fr: Bureau de la transformation numérique
+baseurl: ""
+description:
+  en: Evidence and insights from the Canada.ca team.
+  fr: Validations et perspectives de l'équipe Canada.ca.
+language:
+  en: English
+  fr: Français
+permalink: pretty
+plugins:
+  - jekyll-remote-theme
+title:
+  en: Canada.ca design system
+  fr: Systême de conception numérique du Canada.ca
+urlalt:
+  en: https://design.canada.ca
+  fr: https://conception.canada.ca
+webmaster_verifications:
+  google: Nt_CftRIypA9xVS7Znb2VkrsYbtIDuFWHryxSAC6OwM
+
+# Files excluded from Jekyll builds
+exclude:
+- .editorconfig
+- .jekyll-cache
+- .gitignore
+- .github
+- "*.gpg"
+- "*.tmp"
+- CODE_OF_CONDUCT.md
+- CONTRIBUTING.md
+- CNAME
+- gcweb-jekyll.gemspec
+- Gemfile
+- Gemfile.lock
+- LICENSE*
+- node_modules
+- package*.json
+- screenshot.png
+- SECURITY.md
+- README.md
+- vendor/bundle/
+- vendor/cache/
+- vendor/gems/
+- vendor/ruby/
+
+#include:
+#  - "_pages"
+
 remote_theme: wet-boew/gcweb-jekyll
-title: Demo of Canada.ca design system
 
-language: en
+collections:
+  pages:
+    output: true
+    permalink: /:path
 
-#
 # Page front matter defaults
 defaults:
-  - scope:
-      path: "" # Ensure it's applied to all pages
+  -
+    scope:
+      path: ""
+      type: "pages" # Ensure it's applied to all pages
     values:
       layout: default
+      pageclass: "cnt-wdth-lmtd"
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      image: true
+      layout: "post"
+  -
+    scope:
+      path: "*/en/"
+    values:
+      css: "https://design.canada.ca/assets/css/custom.css"
+      lang: "en"
+  -
+    scope:
+      path: "*/fr/"
+    values:
+      css: "https://conception.canada.ca/assets/css/custom.css"
+      lang: "fr"
+  -
+    scope:
+      path: "_pages/en/"
+      type: "pages"
+    values:
+      breadcrumbs:
+      - title: "About Canada.ca"
+        link: "https://www.canada.ca/en/government/about.html"
+  -
+    scope:
+      path: "_posts/en/"
+      type: "posts"
+    values:
+      breadcrumbs:
+      - title: "About Canada.ca"
+        link:  "https://www.canada.ca/en/government/about.html"
+      - title: Canada.ca blog
+        link: "https://design.canada.ca/blog"
+        type: "Blog"
+  -
+    scope:
+      path: "_pages/fr/"
+      type: "pages"
+    values:
+      breadcrumbs:
+      - title: "A propos de Canada.ca"
+        link:  "https://www.canada.ca/fr/gouvernement/a-propos.html"
+  -
+    scope:
+      path: "_post/fr/"
+      type: "posts"
+    values:
+      breadcrumbs:
+      - title: "A propos de Canada.ca"
+        link:  "https://www.canada.ca/fr/gouvernement/a-propos.html"
+      - title: Blogue de Canada.ca
+        link: "https://conception.canada.ca/blogue"
+        type: "Blog"
