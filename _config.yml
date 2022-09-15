@@ -13,7 +13,6 @@ description:
 language:
   en: English
   fr: Français
-permalink: pretty
 plugins:
   - jekyll-remote-theme
 title:
@@ -50,15 +49,10 @@ exclude:
 - vendor/gems/
 - vendor/ruby/
 
-#include:
-#  - "_pages"
+include:
+ - "_pages"
 
 remote_theme: wet-boew/gcweb-jekyll
-
-collections:
-  pages:
-    output: true
-    permalink: /:path
 
 # Page front matter defaults
 defaults:
@@ -69,6 +63,7 @@ defaults:
     values:
       layout: default
       pageclass: "cnt-wdth-lmtd"
+      permalink: /:title
   -
     scope:
       path: ""
@@ -78,27 +73,28 @@ defaults:
       layout: "post"
   -
     scope:
-      path: "*/en/"
+      path: "en/"
     values:
       css: "https://design.canada.ca/assets/css/custom.css"
       lang: "en"
   -
     scope:
-      path: "*/fr/"
+      path: "fr/"
     values:
       css: "https://conception.canada.ca/assets/css/custom.css"
       lang: "fr"
   -
     scope:
-      path: "_pages/en/"
+      path: "en/"
       type: "pages"
     values:
       breadcrumbs:
       - title: "About Canada.ca"
         link: "https://www.canada.ca/en/government/about.html"
+      permalink: /:title
   -
     scope:
-      path: "_posts/en/"
+      path: "en/"
       type: "posts"
     values:
       breadcrumbs:
@@ -109,7 +105,7 @@ defaults:
         type: "Blog"
   -
     scope:
-      path: "_pages/fr/"
+      path: "fr/"
       type: "pages"
     values:
       breadcrumbs:
@@ -117,7 +113,7 @@ defaults:
         link:  "https://www.canada.ca/fr/gouvernement/a-propos.html"
   -
     scope:
-      path: "_post/fr/"
+      path: "fr/"
       type: "posts"
     values:
       breadcrumbs:
