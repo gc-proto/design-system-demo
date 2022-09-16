@@ -50,15 +50,18 @@ exclude:
 - vendor/gems/
 - vendor/ruby/
 
-#include:
-#  - "_pages"
-
-remote_theme: wet-boew/gcweb-jekyll
+include:
+ - "_pages"
 
 collections:
-  pages:
+  en:
     output: true
-    permalink: /:path
+    permalink: /:collection/:name
+  fr:
+    output: true
+    permalink: /:collection/:name
+
+remote_theme: wet-boew/gcweb-jekyll
 
 # Page front matter defaults
 defaults:
@@ -71,26 +74,27 @@ defaults:
       pageclass: "cnt-wdth-lmtd"
   -
     scope:
-      path: ""
+      path: "_posts"
       type: "posts"
     values:
       image: true
       layout: "post"
+      permalink: /:categories/:year/:month/:day/:title/
   -
     scope:
-      path: "*/en/"
+      path: "_en/"
     values:
       css: "https://design.canada.ca/assets/css/custom.css"
       lang: "en"
   -
     scope:
-      path: "*/fr/"
+      path: "_fr/"
     values:
       css: "https://conception.canada.ca/assets/css/custom.css"
       lang: "fr"
   -
     scope:
-      path: "_pages/en/"
+      path: "_en/"
       type: "pages"
     values:
       breadcrumbs:
@@ -98,7 +102,7 @@ defaults:
         link: "https://www.canada.ca/en/government/about.html"
   -
     scope:
-      path: "_posts/en/"
+      path: "_en/"
       type: "posts"
     values:
       breadcrumbs:
@@ -107,9 +111,12 @@ defaults:
       - title: Canada.ca blog
         link: "https://design.canada.ca/blog"
         type: "Blog"
+      categories:
+        - "en"
+        - "blog"
   -
     scope:
-      path: "_pages/fr/"
+      path: "_fr/"
       type: "pages"
     values:
       breadcrumbs:
@@ -117,7 +124,7 @@ defaults:
         link:  "https://www.canada.ca/fr/gouvernement/a-propos.html"
   -
     scope:
-      path: "_post/fr/"
+      path: "_fr/"
       type: "posts"
     values:
       breadcrumbs:
@@ -126,3 +133,6 @@ defaults:
       - title: Blogue de Canada.ca
         link: "https://conception.canada.ca/blogue"
         type: "Blog"
+      categories:
+        - "fr"
+        - "blogue"
